@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatsAPI", "CatsAPI\CatsAPI.csproj", "{4C2FE35D-5A94-4D17-92F6-1D5211A9E419}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C2FE35D-5A94-4D17-92F6-1D5211A9E419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2FE35D-5A94-4D17-92F6-1D5211A9E419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2FE35D-5A94-4D17-92F6-1D5211A9E419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2FE35D-5A94-4D17-92F6-1D5211A9E419}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E840765A-D718-4B82-9FA6-C279DE5619E7}
+	EndGlobalSection
+EndGlobal
