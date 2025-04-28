@@ -1,0 +1,15 @@
+﻿services:
+  postgres:
+    image: postgres:latest
+    container_name: catito-db
+    ports:
+      - "8410:5432"
+    environment:
+      POSTGRES_USER: catito_user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: catito_database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
