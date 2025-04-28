@@ -14,10 +14,19 @@ namespace Application.Repositories
         }
 
         // Get User by Credentials
-        public async Task<User> GetUserByEmailAndPasswordHashAsync(string email, string passwordHash)
+        public async Task<User?> GetUserByEmailAndPasswordAsync(string email, string password)
         {
+            var sql = @"
+                SELECT * FROM ""Users""
+                WHERE ""Email"" = {0}
+                AND ""PasswordHash"" = crypt({1}, ""PasswordHash"")
+                LIMIT 1
+                ";
+
             return await _context.Users
-                .FirstOrDefaultAsync(user => user.Email == email && user.PasswordHash == passwordHash);
+                .FromSqlRaw(sql, email, password)
+                .FirstOrDefaultAsync();
         }
+
     }
 }

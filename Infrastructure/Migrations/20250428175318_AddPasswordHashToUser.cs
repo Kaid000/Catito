@@ -30,6 +30,8 @@ namespace Infrastructure.Migrations
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp with time zone",
                 oldDefaultValue: new DateTime(2025, 4, 28, 12, 30, 3, 711, DateTimeKind.Utc).AddTicks(5903));
+
+            migrationBuilder.Sql("CREATE EXTENSION IF NOT EXISTS pgcrypto;");
         }
 
         /// <inheritdoc />
@@ -54,6 +56,8 @@ namespace Infrastructure.Migrations
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp with time zone",
                 oldDefaultValue: new DateTime(2025, 4, 28, 17, 53, 17, 896, DateTimeKind.Utc).AddTicks(667));
+
+            migrationBuilder.Sql("DROP EXTENSION IF EXISTS pgcrypto;");
         }
     }
 }

@@ -1,5 +1,6 @@
 using Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Application.Configuration.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddRepositories();
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseNpgsql("Host=localhost;Port=8410;Database=catito_database;Username=catito_user;Password=secret"));
 var app = builder.Build();
