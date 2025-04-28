@@ -1,4 +1,6 @@
-﻿using Application.Repositories;
+﻿using Application.Services;
+using Domain.DTO;
+using Domain.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -6,25 +8,25 @@ using Microsoft.AspNetCore.Mvc;
 public class AuthController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
-    private readonly UserRepository _userRepository;
+    private readonly AuthService _authService;
 
-    public AuthController(ILogger<AuthController> logger, UserRepository userRepository)
+    public AuthController(ILogger<AuthController> logger, AuthService authService)
     {
         _logger = logger;
-        _userRepository = userRepository;
+        _authService = authService;
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<string>> Login(string email, string password)
+    public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginDTO loginDTO)
     {
-        var user = await _userRepository.GetUserByEmailAndPasswordAsync(email, password);
+        var token = await _authService.AuthenticateAsync(loginDTO.Email, loginDTO.Password);
 
-        if (user == null)
+        if (token == null)
         {
-            _logger.LogWarning("User not found: {Email}", email);
+            _logger.LogWarning("User not found: {Email}", loginDTO.Email);
             return Unauthorized("Invalid credentials");
         }
 
-        return Ok("123");
+        return Ok(token);
     }
 }
