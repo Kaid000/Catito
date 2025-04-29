@@ -2,6 +2,6 @@
 {
     public class LoginResponse
     {
-        public string JwtSecretKey { get; set; }
+        required public string JwtSecretKey { get; set; }
     }
 }

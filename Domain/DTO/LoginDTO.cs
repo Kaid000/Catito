@@ -7,10 +7,10 @@ namespace Domain.DTO
     {
         [EmailAddress]
         [Required]
-        public string Email { get; set; }
+        required public string Email { get; set; }
 
         [PasswordPropertyText]
         [Required]
-        public string Password { get; set; }
+        required public string Password { get; set; }
     }
 }

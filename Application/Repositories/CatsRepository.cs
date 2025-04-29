@@ -1,6 +1,6 @@
 ﻿namespace Application.Repositories
 {
-    class CatsRepository
+    public class CatsRepository
     {
     }
 }

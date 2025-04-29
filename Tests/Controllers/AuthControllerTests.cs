@@ -1,5 +1,4 @@
-using Application.Services;
-using Application.Services.Interfaces;
+﻿using Application.Services.Interfaces;
 using Domain.DTO;
 using Domain.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +44,7 @@ namespace Tests.Controllers
 
             _authServiceMock
                 .Setup(service => service.AuthenticateAsync(loginDto.Email, loginDto.Password))
-                .ReturnsAsync((LoginResponse)null);
+                .ReturnsAsync((LoginResponse?)null);
 
             var result = await _controller.Login(loginDto);
 

@@ -1,0 +1,17 @@
+root = true
+
+[*.cs]
+dotnet_diagnostic.SA0001.severity = none
+
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+charset = utf-8-bom
+trim_trailing_whitespace = true
+
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1309.severity = none
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1516.severity = none

@@ -46,7 +46,7 @@ namespace Infrastructure.Migrations
                     IsSterilized = table.Column<bool>(type: "boolean", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValue: new DateTime(2025, 4, 29, 13, 11, 6, 461, DateTimeKind.Utc).AddTicks(8159)),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValue: new DateTime(2025, 4, 29, 13, 11, 6, 461, DateTimeKind.Utc).AddTicks(8562))
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValue: new DateTime(2025, 4, 29, 13, 11, 6, 461, DateTimeKind.Utc).AddTicks(8562)),
                 },
                 constraints: table =>
                 {
