@@ -1,4 +1,5 @@
 ﻿using Application.Repositories;
+using Application.Services.Interfaces;
 using Domain.Entities;
 using Domain.Responses;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace Application.Services
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
         private readonly UserRepository _userRepository;
         private readonly IConfiguration _configuration;

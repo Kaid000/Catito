@@ -1,5 +1,5 @@
-﻿using Application.Repositories;
-using Application.Services;
+﻿using Application.Services;
+using Application.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Configuration.Extentions
@@ -10,7 +10,7 @@ namespace Application.Configuration.Extentions
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<AuthService>();
+            services.AddScoped<IAuthService, AuthService>();
 
         }
     }

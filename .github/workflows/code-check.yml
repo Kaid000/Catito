@@ -7,9 +7,9 @@ on:
     branches: [ "main", "develop" ]
   schedule:
     - cron: '*/30 * * * *'
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -27,4 +27,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-
+    - name: Run Tests
+      run: dotnet test --no-build --verbosity normal
