@@ -1,4 +1,4 @@
-namespace CatsAPI
+﻿namespace CatsAPI
 {
     public class WeatherForecast
     {

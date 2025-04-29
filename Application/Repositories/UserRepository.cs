@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Repositories
 {
-   public class UserRepository
+    public class UserRepository
     {
         private readonly ApplicationDBContext _context;
 
