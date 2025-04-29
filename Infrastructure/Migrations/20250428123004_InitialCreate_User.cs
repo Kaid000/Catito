@@ -19,7 +19,7 @@ namespace Infrastructure.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValue: new DateTime(2025, 4, 28, 12, 30, 3, 711, DateTimeKind.Utc).AddTicks(5903)),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValue: new DateTime(2025, 4, 28, 12, 30, 3, 711, DateTimeKind.Utc).AddTicks(6346))
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValue: new DateTime(2025, 4, 28, 12, 30, 3, 711, DateTimeKind.Utc).AddTicks(6346)),
                 },
                 constraints: table =>
                 {

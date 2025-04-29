@@ -5,11 +5,14 @@ namespace Infrastructure.Contexts
 {
     public class ApplicationDBContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Cat> Cats { get; set; }
-
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
-            : base(options) {}
+        : base(options)
+        {
+        }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Cat> Cats { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -8,8 +8,6 @@ namespace Application.Configuration.Extentions
         public static void AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<UserRepository>();
-
         }
     }
-
 }

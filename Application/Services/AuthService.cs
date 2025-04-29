@@ -1,12 +1,12 @@
-﻿using Application.Repositories;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Application.Repositories;
 using Application.Services.Interfaces;
 using Domain.Entities;
 using Domain.Responses;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace Application.Services
 {
@@ -25,11 +25,13 @@ namespace Application.Services
         {
             var user = await _userRepository.GetUserByEmailAndPasswordAsync(email, password);
             if (user == null)
+            {
                 return null;
+            }
 
             return new LoginResponse()
             {
-                JwtSecretKey = GenerateJwtToken(user)
+                JwtSecretKey = GenerateJwtToken(user),
             };
         }
 
@@ -47,7 +49,7 @@ namespace Application.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 
             var token = new JwtSecurityToken(
@@ -55,11 +57,9 @@ namespace Application.Services
                 audience,
                 claims,
                 expires: DateTime.UtcNow.AddHours(1),
-                signingCredentials: credentials
-            );
+                signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
-
