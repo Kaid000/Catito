@@ -6,6 +6,7 @@ namespace Infrastructure.Contexts
     public class ApplicationDBContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Cat> Cats { get; set; }
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options) {}
@@ -17,16 +18,45 @@ namespace Infrastructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>().HasKey(b => b.Id);
-            modelBuilder.Entity<User>().Property(b => b.Id).IsRequired();
-            modelBuilder.Entity<User>().Property(b => b.Email).IsRequired();
-            modelBuilder.Entity<User>().Property(b => b.PasswordHash).IsRequired();
-            modelBuilder.Entity<User>().Property(b => b.CreatedAt).IsRequired().HasDefaultValue(DateTime.UtcNow);
-            modelBuilder.Entity<User>().Property(b => b.UpdatedAt).IsRequired().HasDefaultValue(DateTime.UtcNow);
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Cats)
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.OwnerId)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.Id);
+            modelBuilder.Entity<User>()
+                .Property(u => u.Email)
+                .IsRequired();
+            modelBuilder.Entity<User>()
+                 .HasIndex(u => u.Email)
+                 .IsUnique();
+            modelBuilder.Entity<User>()
+                .Property(u => u.PasswordHash)
+                .IsRequired();
+            modelBuilder.Entity<User>()
+                .Property(u => u.CreatedAt)
+                .IsRequired()
+                .HasDefaultValue(DateTime.UtcNow);
+            modelBuilder.Entity<User>()
+                .Property(u => u.UpdatedAt)
+                .IsRequired()
+                .HasDefaultValue(DateTime.UtcNow);
+
+            modelBuilder.Entity<Cat>()
+                .HasKey(c => c.Id);
+            modelBuilder.Entity<Cat>()
+                .Property(c => c.Name)
+                .IsRequired();
+            modelBuilder.Entity<Cat>()
+                .Property(c => c.CreatedAt)
+                .HasDefaultValue(DateTime.UtcNow);
+            modelBuilder.Entity<Cat>()
+                .Property(c => c.UpdatedAt)
+                .HasDefaultValue(DateTime.UtcNow);
         }
     }
 }

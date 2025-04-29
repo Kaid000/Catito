@@ -27,6 +27,5 @@ namespace Application.Repositories
                 .FromSqlRaw(sql, email, password)
                 .FirstOrDefaultAsync();
         }
-
     }
 }
