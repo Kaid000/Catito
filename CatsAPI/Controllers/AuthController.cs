@@ -1,4 +1,4 @@
-﻿using Application.Services;
+﻿using Application.Services.Interfaces;
 using Domain.DTO;
 using Domain.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 public class AuthController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
-    private readonly AuthService _authService;
+    private readonly IAuthService _authService;
 
-    public AuthController(ILogger<AuthController> logger, AuthService authService)
+    public AuthController(ILogger<AuthController> logger, IAuthService authService)
     {
         _logger = logger;
         _authService = authService;
