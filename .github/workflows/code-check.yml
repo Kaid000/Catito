@@ -1,4 +1,4 @@
-﻿name: Build and Test .NET Project
+﻿name: Build, Test and Lint .NET Project
 
 on:
   push:
@@ -24,8 +24,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Build with warnings as errors (StyleCop enforced)
+      run: dotnet build --no-restore -warnaserror
 
-    - name: Run Tests
+    - name: Run tests
       run: dotnet test --no-build --verbosity normal
+
+    - name: Lint with dotnet format (optional auto-fix check)
+      run: dotnet format --verify-no-changes --severity error
